@@ -2,9 +2,9 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
-
-import strip from "@rollup/plugin-strip";
+import babel from "@rollup/plugin-babel";
 import json from "@rollup/plugin-json";
+
 export default {
   input: "index.ts",
   output: [
@@ -19,10 +19,11 @@ export default {
     resolve(),
     commonjs(),
     typescript({ tsconfig: "./tsconfig.json" }),
-    strip({
-      include: ["**/*.mjs", "**/*.ts", "**/*.tsx", "**/*.js"], // Include all files
-      labels: ["use client"], // Rimuove la direttiva
-    }),
     json(),
+    babel({
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
+      plugins: ["babel-plugin-react-compiler"],
+      babelHelpers: "bundled",
+    }),
   ],
 };

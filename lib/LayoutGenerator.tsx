@@ -1,6 +1,5 @@
 import { Stack } from "expo-router";
 import { ComponentProps, FC, useCallback, useMemo } from "react";
-//import * as SplashScreen from 'expo-splash-screen';
 import "react-native-reanimated";
 import { pageConfig } from "@gaddario98/react-pages";
 import { LayoutGeneratorProps, Screen } from "./types";

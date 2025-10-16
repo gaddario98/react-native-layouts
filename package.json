@@ -8,7 +8,7 @@
   "react-native": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c rollup.config.js",
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {

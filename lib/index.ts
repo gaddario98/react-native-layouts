@@ -1,4 +1,4 @@
-import LayoutGenerator from './LayoutGenerator';
-export * from './types';
-export * from './config';
+import LayoutGenerator from "./LayoutGenerator";
+export * from "./types";
+export * from "./config";
 export { LayoutGenerator };

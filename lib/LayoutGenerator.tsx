@@ -1,9 +1,10 @@
 import { Stack } from "expo-router";
-import { ComponentProps, FC, useCallback, useMemo } from "react";
+import { ComponentProps, useCallback, useMemo } from "react";
 import "react-native-reanimated";
 import { pageConfig } from "@gaddario98/react-pages";
 import { LayoutGeneratorProps, Screen } from "./types";
 import { useAuthValue } from "@gaddario98/react-auth";
+import { layoutGeneratorConfig } from "./config";
 //SplashScreen.preventAutoHideAsync();
 
 const LayoutGenerator = ({
@@ -57,22 +58,21 @@ const LayoutGenerator = ({
   );*/
 
   return (
-    <Stack
-      screenOptions={screenOptions}
-      initialRouteName={initialRouteName ?? screens[0].name}
-    >
+    <Stack screenOptions={screenOptions} initialRouteName={initialRouteName}>
       {screens.map((screen) => {
         return (
           <Stack.Screen
             key={screen.name}
             name={screen.name}
             options={{
-              headerShown: Boolean(screen.header),
-              header: screen.header,
+              headerShown: Boolean(
+                screen.header || layoutGeneratorConfig?.header
+              ),
+              header: screen.header || layoutGeneratorConfig?.header,
               ...(screen?.options ?? {}),
             }}
             redirect={isRedirect(screen)}
-           /* getId={({ params }) => {
+            /* getId={({ params }) => {
               const p = params?.[screen.name.slice(1, -1)];
               return `${screen.name}/${p ?? ""}`;
             }}dangerouslySingular*/

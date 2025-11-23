@@ -19,3 +19,6 @@ export interface LayoutGeneratorProps {
   userType?: string;
   initialRouteName?: string;
 }
+export interface LayoutGeneratorConfig {
+  header?: (props: NativeStackHeaderProps) => React.ReactNode;
+}
